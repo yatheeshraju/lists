@@ -1,0 +1,9 @@
+extends layout
+
+block content
+
+    h1= item.title
+    h5 Posted by #{item.author}
+    p= item.body
+    a.btn.btn-dark(href='/list/item/edit/'+item._id) Edit
+    a.btn.btn-danger.delete-item(href='#',data-id=item._id) Delete

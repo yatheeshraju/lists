@@ -1,0 +1,41 @@
+doctype html 
+html
+    head
+        title Lists
+        link(href="/bower_components/bootstrap/dist/css/bootstrap.css", rel="stylesheet")
+        link(href="/css/style.css", rel="stylesheet")
+        
+    body
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+            a.navbar-brand(href='/') MCity List
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarSupportedContent.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.nav-item
+                        a.nav-link(href='/')
+                            | Home 
+                    li.nav-item
+                        a.nav-link(href='/list/add') 
+                            |Add Listing
+                ul.navbar-nav.ml-auto
+                    li.nav-item
+                        a.nav-link(href='/users/register')
+                            | Register 
+                    li.nav-item
+                        a.nav-link(href='/users/login')
+                            | Login 
+        .container
+            !=messages('message',locals)
+            if errors
+                each err in errors
+                    div(class="alert alert-danger") #{err.msg}
+            block content
+                
+            footer
+                hr
+                p Copyright &copy; 2019 . 
+        script(src="/bower_components/jquery/dist/jquery.js")
+        script(src="/bower_components/bootstrap/dist/js/bootstrap.js")
+        script(src="/js/main.js")
+        
