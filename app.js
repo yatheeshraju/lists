@@ -5,10 +5,12 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
+const config = require('./config/database');
 
 //connect to db
 
-mongoose.connect('mongodb://localhost/list', {useNewUrlParser: true});
+mongoose.connect(config.database, {useNewUrlParser: true});
 let db = mongoose.connection;
 // check connection 
 db.once('open',function () {
@@ -71,7 +73,20 @@ app.use(expressValidator({
       };
     }
   }));
-  
+
+//passport config 
+
+require('./config/passport')(passport);
+
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('*', function(req, res, next){
+  res.locals.user = req.user || null;
+  next();
+});
+
 // home route 
 app.get('/',function (req,res) {
     list_item.find({},function (err,list_items) {
