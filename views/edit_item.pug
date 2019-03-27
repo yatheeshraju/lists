@@ -1,15 +1,14 @@
 extends layout
 
 block content
-    h1 Add List
+    br
+    h3 Edit Add 
     form(method="POST",action="/list/edit/"+item._id)
         #form-group
             label Title:
             input.form-control(name="title",type="text" value=item.title)
         #form-group
-            label Author:
-            input.form-control(name="author",type="text" value=item.author)
-        #form-group
             label Body:
-            textarea.form-control(name="body")=item.body
-        input.btn.btn-primary(type="submit",value="Submit")
+            textarea.form-control(name="body" ,rows="10" )=item.body
+            br
+            input.btn.btn-primary(type="submit",value="Submit")

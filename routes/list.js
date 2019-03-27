@@ -77,7 +77,7 @@ router.post('/add',ensureAuthenticated,function (req,res) {
 router.post('/edit/:id',ensureAuthenticated,function (req,res) {
     let item={};
     item.title=req.body.title;
-    item.author=req.body.author;
+    item.author=req.param._id;
     item.body=req.body.body;
 
     let query = {_id:req.params.id};

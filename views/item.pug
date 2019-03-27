@@ -1,9 +1,10 @@
 extends layout
 
 block content
-
-    h1= item.title
-    h5 Posted by #{author}
+    br
+    h2= item.title
+    strong Posted by #{author}
+    br
     p= item.body
     if user 
         if user.id == item.author

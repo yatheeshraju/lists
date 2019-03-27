@@ -1,35 +1,30 @@
 doctype html 
 html
     head
-        title Lists
+        title Mcity Chennai
         link(href="/bower_components/bootstrap/dist/css/bootstrap.css", rel="stylesheet")
         link(href="/css/style.css", rel="stylesheet")
         
     body
         nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-            a.navbar-brand(href='/') MCity List
-            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+            a.navbar-brand.py-0(href='/') Mcity Chennai
+            button.navbar-toggler.py-0(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             #navbarSupportedContent.collapse.navbar-collapse
-                ul.navbar-nav.mr-auto
-                    li.nav-item
-                        a.nav-link(href='/')
-                            | Home
-                    if user 
-                        li.nav-item
-                            a.nav-link(href='/list/add') 
-                                |Add Listing
                 ul.navbar-nav.ml-auto
                     if user
                         li.nav-item
-                            a.nav-link(href='/users/logout')
+                            a.nav-link.py-0(href='/list/add') 
+                                |Add Listing
+                        li.nav-item
+                            a.nav-link.py-0(href='/users/logout')
                                 | Logout
                     else 
                         li.nav-item
-                            a.nav-link(href='/users/register')
+                            a.nav-link.py-0(href='/users/register')
                                 | Register 
                         li.nav-item
-                            a.nav-link(href='/users/login')
+                            a.nav-link.py-0(href='/users/login')
                                 | Login 
         .container
             !=messages('message',locals)
