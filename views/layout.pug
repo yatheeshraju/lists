@@ -1,6 +1,8 @@
 doctype html 
 html
     head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
         title Mcity Chennai
         link(href="/bower_components/bootstrap/dist/css/bootstrap.css", rel="stylesheet")
         link(href="/css/style.css", rel="stylesheet")
@@ -8,35 +10,32 @@ html
     body
         nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
             a.navbar-brand.py-0(href='/') Mcity Chennai
-            button.navbar-toggler.py-0(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-                span.navbar-toggler-icon
-            #navbarSupportedContent.collapse.navbar-collapse
                 ul.navbar-nav.ml-auto
                     if user
-                        li.nav-item
-                            a.nav-link.py-0(href='/list/add') 
-                                |Add Listing
-                        li.nav-item
-                            a.nav-link.py-0(href='/users/logout')
-                                | Logout
+                        li.nav-item 
+                            a.btn.btn-outline-light(href='/list/add')
+                                ion-icon(name='md-add')
                     else 
                         li.nav-item
-                            a.nav-link.py-0(href='/users/register')
-                                | Register 
-                        li.nav-item
-                            a.nav-link.py-0(href='/users/login')
-                                | Login 
+                            a.btn.btn-outline-light(href='/users/login')
+                                ion-icon(name='log-in')
         .container
+            br
             !=messages('message',locals)
             if errors
                 each err in errors
                     div(class="alert alert-danger") #{err.msg}
+            
             block content
                 
             footer
                 hr
                 p Copyright &copy; 2019 . 
+                if user
+                    a.py-0(href='/users/logout')
+                                | Logout
         script(src="/bower_components/jquery/dist/jquery.js")
         script(src="/bower_components/bootstrap/dist/js/bootstrap.js")
+        script(src='https://unpkg.com/ionicons@4.5.5/dist/ionicons.js')
         script(src="/js/main.js")
         

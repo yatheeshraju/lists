@@ -94,7 +94,6 @@ app.get('/',function (req,res) {
            console.log(err);
        }else{
         res.render('index',{
-            title:'Lists',
             list_items:list_items
         });
        }
@@ -111,6 +110,6 @@ app.use('/users',users);
 
 
 var port = 8080
-app.listen(port,'10.139.100.219',function () {
+app.listen(port,function () {
     console.log('server started on 80 .....');
 });

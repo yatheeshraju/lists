@@ -77,12 +77,12 @@ router.post('/add',ensureAuthenticated,function (req,res) {
 router.post('/edit/:id',ensureAuthenticated,function (req,res) {
     let item={};
     item.title=req.body.title;
-    item.author=req.param._id;
+    item.author=req.user._id;
     item.body=req.body.body;
 
     let query = {_id:req.params.id};
     console.log(query);
-    list_item.update(query,item,function (err) {
+    list_item.updateOne(query,item,function (err) {
         if(err){
             console.log(err);
             return;
@@ -98,11 +98,12 @@ router.post('/edit/:id',ensureAuthenticated,function (req,res) {
     if(!req.user._id){
         res.status(500).send();
     }
+    let query = {_id:req.params.id};
     item.findById(req.params._id,function (err,item) {
         if(item.author!=req.user._id){
             res.status(500).send();
         }else{
-            let query = {_id:req.params.id};
+            
             list_item.deleteOne(query,function (err) {
                 if(err){
                     console.log(err);
