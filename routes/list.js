@@ -93,18 +93,16 @@ router.post('/edit/:id',ensureAuthenticated,function (req,res) {
     });
  });
 
- router.delete('/item/:id',ensureAuthenticated,function (req,res) {
-   
+ router.delete('/item/:id',function (req,res) {
+    let query = {_id:req.params.id};
     if(!req.user._id){
         res.status(500).send();
     }
-    let query = {_id:req.params.id};
-    item.findById(req.params._id,function (err,item) {
+    list_item.findById(req.params.id,function (err,item) {
         if(item.author!=req.user._id){
             res.status(500).send();
         }else{
-            
-            list_item.deleteOne(query,function (err) {
+            list_item.remove(query,function (err) {
                 if(err){
                     console.log(err);
                 }

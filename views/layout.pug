@@ -8,7 +8,7 @@ html
         link(href="/css/style.css", rel="stylesheet")
         
     body
-        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
             a.navbar-brand.py-0(href='/') Mcity Chennai
                 ul.navbar-nav.ml-auto
                     if user
@@ -19,7 +19,7 @@ html
                         li.nav-item
                             a.btn.btn-outline-light(href='/users/login')
                                 ion-icon(name='log-in')
-        .container
+        div.container.main-c
             br
             !=messages('message',locals)
             if errors
@@ -28,12 +28,21 @@ html
             
             block content
                 
-            footer
-                hr
-                p Copyright &copy; 2019 . 
-                if user
-                    a.py-0(href='/users/logout')
-                                | Logout
+        footer.navbar.navbar-nav.fixed-bottom
+            hr
+            div.container
+                    div.btn-group.btn-group-lg.text-center(role="group")
+                        a.btn.btn-dark(href='#',onClick="history.back();")
+                                ion-icon(name='arrow-back')
+                        if user && item  
+                            if user.id == item.author
+                                a.btn.btn-danger.delete-item(href='#',data-id=item._id)
+                                    ion-icon(name='trash')
+                                a.btn.btn-dark(href='/list/item/edit/'+item._id)
+                                    ion-icon(name='create')
+                               
+                        
+                
         script(src="/bower_components/jquery/dist/jquery.js")
         script(src="/bower_components/bootstrap/dist/js/bootstrap.js")
         script(src='https://unpkg.com/ionicons@4.5.5/dist/ionicons.js')
