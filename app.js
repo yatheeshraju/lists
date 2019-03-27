@@ -110,7 +110,7 @@ app.use('/list',list);
 app.use('/users',users);
 
 
-var port = 80
+var port = 8080
 app.listen(port,function () {
     console.log('server started on 80 .....');
 });
