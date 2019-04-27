@@ -9,6 +9,7 @@
   "author": "yatheesh.konduru@gmail.com",
   "license": "ISC",
   "dependencies": {
+    "@editorjs/editorjs": "^2.12.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
