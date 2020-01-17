@@ -10,7 +10,9 @@ const config = require('./config/database');
 
 //connect to db
 
-mongoose.connect(config.database, {useNewUrlParser: true});
+// change the db url based on deply location 
+let dburl= (process.env.MONGODB_URI=" ")? config.database : process.env.MONGODB_URI;
+mongoose.connect(dburl, {useNewUrlParser: true});
 let db = mongoose.connection;
 // check connection 
 db.once('open',function () {
