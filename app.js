@@ -11,7 +11,7 @@ const config = require('./config/database');
 //connect to db
 
 // change the db url based on deply location 
-let dburl= (process.env.MONGODB_URI=" ")? config.database : process.env.MONGODB_URI;
+let dburl= process.env.MONGODB_URI||config.database;
 mongoose.connect(dburl, {useNewUrlParser: true});
 let db = mongoose.connection;
 // check connection 
@@ -111,7 +111,7 @@ app.use('/list',list);
 app.use('/users',users);
 
 
-var port = 8080
+var port = process.env.PORT ||8080 ;
 app.listen(port,function () {
     console.log('server started on 8080 .....');
 });
