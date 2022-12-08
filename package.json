@@ -11,9 +11,9 @@
   "dependencies": {
     "@editorjs/editorjs": "^2.12.4",
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "connect-flash": "^0.1.1",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "express-messages": "^1.0.1",
     "express-session": "^1.15.6",
     "express-validator": "^5.3.1",
